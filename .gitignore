@@ -1,2 +1,6 @@
-# Node
+#Global
+.DS_Store
+.env
+
+# Serveur
 node_modules
