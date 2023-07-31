@@ -18,9 +18,9 @@ export default class Camera{
             35,
             this.sizes.aspectRatio,
             0.1,
-            100
+            200
         )
-        this.instance.position.set(6, 4, 8)
+        this.instance.position.set(-35, 30, 29)
         this.scene.add(this.instance)
     }
 
