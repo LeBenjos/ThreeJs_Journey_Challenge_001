@@ -28,7 +28,7 @@ export default class GameboyText{
     update(){
         this.model.traverse((child) => {
             if(child.isMesh){
-                if(child.name === "letterG" || child.name === "letterM" || child.name === "letterB" || child.name === "letterY"){
+                if(child.name === "Curve001" || child.name === "Curve001_1" || child.name === "Curve003" || child.name === "Curve003_1" || child.name === "Curve005" || child.name === "Curve005_1" || child.name === "Curve007" || child.name === "Curve007_1"){
                     child.position.y = child.position.y + Math.sin(this.time.elapsed * 0.003) * 0.0025
                 } else {
                     child.position.y = child.position.y + Math.sin(this.time.elapsed * 0.003) * -0.0025

@@ -13,7 +13,7 @@ export default class Floor{
         const floor = new THREE.Mesh(
             new THREE.PlaneGeometry(100,100),
             new THREE.MeshStandardMaterial({
-                color: "#fff6ba"
+                color: "#ffd286"
             })
         )
         floor.rotation.x = -Math.PI * 0.5
@@ -24,7 +24,7 @@ export default class Floor{
         const wallLeft = new THREE.Mesh(
             new THREE.PlaneGeometry(100,100),
             new THREE.MeshStandardMaterial({
-                color: "#fff6ba"
+                color: "#ffd286"
             })
         )
         wallLeft.position.set(0, 50, -50)
@@ -35,7 +35,7 @@ export default class Floor{
         const wallRight = new THREE.Mesh(
             new THREE.PlaneGeometry(100,100),
             new THREE.MeshStandardMaterial({
-                color: "#fff6ba"
+                color: "#ffd286"
             })
         )
         wallRight.position.set(50, 50, 0)

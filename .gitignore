@@ -4,3 +4,6 @@
 
 # Serveur
 node_modules
+
+# Build
+dist

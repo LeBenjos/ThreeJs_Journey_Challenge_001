@@ -11,7 +11,17 @@ export default class Gameboy{
         this.world = this.experience.world
 
         this.resource = this.resources.items.gameboyModel
-        this.setModel()
+        this.sound = {
+            play: (sound) =>{ 
+                sound.currentTime = 0
+                sound.play() },
+            backgroundMusic: new Audio('/sounds/background.mp3'),
+            crossSelected: new Audio('/sounds/crossSelectedSound.mp3'),
+            easterEgg: new Audio('/sounds/easterEgg.mp3'),
+            boutonPress: new Audio('/sounds/boutonPress.mp3')
+        }
+        this.sound.backgroundMusic.loop = true
+        this.sound.backgroundMusic.volume = 0.2
 
         this.key = {
             a: false,
@@ -25,6 +35,8 @@ export default class Gameboy{
             konami: [],
             easterEgg: ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA']
         }
+
+        this.setModel()
 
         window.addEventListener('keydown', (key) => {
             if((key.code === 'KeyA' || key.code === 'KeyQ') && !this.key.a){
@@ -115,6 +127,7 @@ export default class Gameboy{
     // Key A
     pressA(){
         this.key.a = true
+        this.sound.play(this.sound.boutonPress)
         this.model.traverse((child) => {
             if(child.name === "butonA"){
                 gsap.to(child.position, { duration: 0.25, y: 3.1 })
@@ -143,6 +156,7 @@ export default class Gameboy{
 
     unPressB(){
         this.key.b = false
+        this.sound.play(this.sound.boutonPress)
         this.model.traverse((child) => {
             if(child.name === "butonB"){
                 gsap.to(child.position, { duration: 0.25, y: 3.2 })
@@ -172,6 +186,7 @@ export default class Gameboy{
     // Key ArrowRight
     pressArrowRight(){
         this.key.arrowRight = true
+        this.sound.play(this.sound.crossSelected)
         this.model.traverse((child) => {
             if(child.name === "cross"){
                 gsap.to(child.rotation, { duration: 0.25, z: -Math.PI * 0.025 })
@@ -227,6 +242,7 @@ export default class Gameboy{
     // Key ArrowLeft
     pressArrowLeft(){
         this.key.arrowLeft = true
+        this.sound.play(this.sound.crossSelected)
         this.model.traverse((child) => {
             if(child.name === "cross"){
                 gsap.to(child.rotation, { duration: 0.25, z: Math.PI * 0.025 })
@@ -264,9 +280,11 @@ export default class Gameboy{
     
     pressStart(){
         this.key.start = true
+        this.sound.play(this.sound.boutonPress)
         this.model.traverse((child) => {
             if(child.name === "butonStart"){
                 gsap.to(child.position, { duration: 0.25, y: 3.1})
+                window.open("https://github.com/LeBenjos/ThreeJs_Journey_Challenge_001", "_blank");
             }
         })
     }
@@ -284,9 +302,15 @@ export default class Gameboy{
     
     pressSelect(){
         this.key.select = true
+        this.sound.play(this.sound.boutonPress)
         this.model.traverse((child) => {
             if(child.name === "butonSelect"){
                 gsap.to(child.position, { duration: 0.25, y: 3.1 })
+                if(!this.sound.backgroundMusic.paused){
+                    this.sound.backgroundMusic.pause()
+                } else {
+                    this.sound.backgroundMusic.play()
+                }
             }
         })
     }
@@ -311,13 +335,14 @@ export default class Gameboy{
         }
 
         if(JSON.stringify(this.key.konami) == JSON.stringify(this.key.easterEgg)){
+            this.sound.play(this.sound.easterEgg)
             for(let i = 0; i < this.world.objet.length; i++){
                 if(this.world.objet[i].model.visible == true){
                         this.world.objet[i].model.visible = false
                         this.world.threeJsJourney.model.visible = true
                 }
             }
-            console.log("Code KONAMI, ThreeJs Journey logo can spawn now!")
+            console.log("Code KONAMI, Thanks to ThreeJs Journey!")
         }
     }
 }

@@ -28,7 +28,7 @@ export default class MarioBox{
             geometry = new THREE.EdgesGeometry(BufferGeometryUtils.mergeGeometries(allGeometries))
         }
         
-        this.model = new THREE.LineSegments(geometry, new THREE.LineBasicMaterial({ color: '#00ff00'}))
+        this.model = new THREE.LineSegments(geometry, new THREE.LineBasicMaterial({ color: '#03FEFA'}))
         this.model.scale.setScalar(1.25)
         this.model.position.set(model.position.x, model.position.y - 1, model.position.z)
         this.model.rotation.reorder('YXZ')

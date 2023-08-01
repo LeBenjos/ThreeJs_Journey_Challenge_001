@@ -7,7 +7,13 @@ export default class Camera{
         this.experience = new Experience()
         this.sizes = this.experience.sizes
         this.canvas = this.experience.canvas
+        this.debug = this.experience.debug
+        this.world = this.experience.world
         this.scene = this.experience.scene
+
+        if(this.debug.active){
+            this.debugFolder = this.debug.gui.addFolder('Camera')
+        }
 
         this.setInstance()
         this.setOrbitControls()
@@ -20,13 +26,23 @@ export default class Camera{
             0.1,
             200
         )
-        this.instance.position.set(-35, 30, 29)
+        // this.instance.lookAt()
+        this.instance.position.set(-40, 30, 25)
         this.scene.add(this.instance)
+
+        if(this.debug.active){
+            this.debugFolder.add(this.instance.position, 'x').min(-100).max(100).step(0.01).name('Position X')
+            this.debugFolder.add(this.instance.position, 'y').min(-100).max(100).step(0.01).name('Position Y')
+            this.debugFolder.add(this.instance.position, 'z').min(-100).max(100).step(0.01).name('Position Z')
+        }
     }
 
     setOrbitControls(){
         this.controls = new OrbitControls(this.instance, this.canvas)
         this.controls.enableDamping = true
+        this.controls.enablePan = false
+        this.controls.minDistance = 20
+        this.controls.maxDistance = 100
     }
 
     resize(){
