@@ -22,6 +22,9 @@ export default class Gameboy{
         }
         this.sound.backgroundMusic.loop = true
         this.sound.backgroundMusic.volume = 0.2
+        this.sound.crossSelected.volume = 0.5
+        this.sound.boutonPress.volume = 0.5
+        this.sound.easterEgg.volume = 0.5
 
         this.key = {
             a: false,
@@ -342,7 +345,7 @@ export default class Gameboy{
                         this.world.threeJsJourney.model.visible = true
                 }
             }
-            console.log("Code KONAMI, Thanks to ThreeJs Journey!")
+            console.log("Thanks to ThreeJs Journey!")
         }
     }
 }

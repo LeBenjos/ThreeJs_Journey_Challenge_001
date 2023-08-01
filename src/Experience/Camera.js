@@ -43,6 +43,7 @@ export default class Camera{
         this.controls.enablePan = false
         this.controls.minDistance = 20
         this.controls.maxDistance = 100
+        this.controls.maxPolarAngle = Math.PI * 0.45
     }
 
     resize(){
