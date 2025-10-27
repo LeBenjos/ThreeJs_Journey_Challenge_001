@@ -15,10 +15,10 @@ export default class Gameboy {
                 sound.currentTime = 0
                 sound.play()
             },
-            backgroundMusic: new Audio('/assets/gameboy/sounds/background.mp3'),
-            crossSelected: new Audio('/assets/gameboy/sounds/crossSelectedSound.mp3'),
-            easterEgg: new Audio('/assets/gameboy/sounds/easterEgg.mp3'),
-            boutonPress: new Audio('/assets/gameboy/sounds/boutonPress.mp3')
+            backgroundMusic: new Audio('./assets/sounds/background.mp3'),
+            crossSelected: new Audio('./assets/sounds/crossSelectedSound.mp3'),
+            easterEgg: new Audio('./assets/sounds/easterEgg.mp3'),
+            boutonPress: new Audio('./assets/sounds/boutonPress.mp3')
         }
         this.sound.backgroundMusic.loop = true
         this.sound.backgroundMusic.volume = 0.2
